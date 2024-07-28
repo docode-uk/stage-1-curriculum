@@ -3,12 +3,6 @@
 ## Overview
 Git is currently the most popular **version control system** in the world, which records the changes made to files over time in a type of **database** called a **repository**. It is completely free and open source. Git is an extremely powerful tool. It is a good idea to learn how to use Git early on in your coding journey; it allows you to easily share code, collaborate with other people on projects and track the entire version history of the files within a project.
 
-### Installing Git
-Before using Git you need to make sure it is installed on your computer. Follow the instructions on this webpage: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git.
-
-## Repositories
-TODO
-
 ## Git vs GitHub
 Git and GitHub are not the same!
 
@@ -19,6 +13,12 @@ Git is a type of version control software which can be installed locally on your
 GitHub is a cloud-based website which... TODO
 
 #### A note about GitHub Desktop
+TODO
+
+### Installing Git
+Before using Git you need to make sure it is installed on your computer. Follow the instructions on this webpage: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git.
+
+## Repositories
 TODO
 
 ## Basic Git workflow
@@ -42,7 +42,7 @@ Below are the basic **Git commands** which you will need to get familiar with to
 
 `git push`
 
-`git log`
+`git log`<br>
 A log of all saved changes
 
 Extra stuff:<br>
@@ -68,7 +68,7 @@ Include link
 ### Articles/books
 <ul> 
     <li>ProGit -> https://git-scm.com/book/en/v2 </li>
-A great open source reference guide.
+A great open source reference guide
 </ul>
 
 ## Exercises
