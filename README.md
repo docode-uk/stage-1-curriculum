@@ -5,4 +5,4 @@ This gitbook project is the first attempt of creating a curriculum for clinician
 This project is a work in progress and will be updated regularly.
 
 # Running the project
-If you want to run the project locally, please see the DEVELOPMENT.md file for instructions.
+If you want to run the project locally, please see the [DEVELOPERS.md](DEVELOPERS.md) file for instructions.
