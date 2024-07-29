@@ -105,3 +105,9 @@ Args can also be passed into the `jq` command with the following code:
 ```bash
 jq --arg field "$field_name" --arg value "$field_value" '.[$field] = $value' "$FILE_PATH" > "$tmp_file"
 ```
+
+To delete a field we must use the `del` command with the following code:
+
+```bash
+jq --arg field "$field_name" 'del(.[$field])' "$FILE_PATH" > "$tmp_file"
+```
