@@ -10,7 +10,7 @@ Once you have Gitbook installed, you can run the following commands to start the
 
 ```bash
 cd book
-gitbook serve
+npx gitbook serve
 ```
 
 This will start a local server that will serve the book on `http://localhost:4000`. You can now open your browser and navigate to `http://localhost:4000` to view the book.
