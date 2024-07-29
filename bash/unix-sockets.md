@@ -48,6 +48,7 @@ import socket
 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
     sock.bind("/tmp/docode.sock")
     sock.listen()
+    print(f"Listening on {sock.getsockname()}")
     conn, address = sock.accept()
     with conn:
         while True:
@@ -70,7 +71,23 @@ with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
 print(f"Received {data!r}")
 ```
 
+If we run `python server.py` we can see the address we are listening on - but the program will appear to hang: it is awaiting a connection before proceeding!
 
+We can prove the kernel is listenting on this socket by creating another terminal instance, and running
+
+```sh
+# the -l flag filters out those to ensure only sockets that are listenting are returned
+# the -p flag shows the associated process
+netstat -lp 
+```
+
+This will return _every socket_ that is listening for connections - we can filter out all of them to just see our process with:
+
+```sh
+netstat -lp | grep docode
+```
+
+In this same terminal we can run `python client.py` - check the output of each terminal!
 
 ----
 ## Questions
