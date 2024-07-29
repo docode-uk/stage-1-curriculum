@@ -41,6 +41,35 @@ A nice analogy I have stolen from [this Stackoverflow response](https://stackove
 ## An example
 We can create a quick example of how this works using python; although any language (including `ba/sh`) would be more than suffice here, although python has some advantages we can get into later (specifically - looking at contexts)!
 
+```python
+# server.py
+import socket
+
+with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
+    sock.bind("/tmp/docode.sock")
+    sock.listen()
+    conn, address = sock.accept()
+    with conn:
+        while True:
+            data = conn.recv(1024)
+            print(f"Got connection with message: {data}")
+            if not data:
+                break
+            conn.sendall(data)
+```
+
+```python
+# client.py
+import socket
+
+with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
+    sock.connect("/tmp/docode.sock")
+    sock.sendall(b"Hello, docode!")
+    data = sock.recv(1024)
+
+print(f"Received {data!r}")
+```
+
 
 
 ----
