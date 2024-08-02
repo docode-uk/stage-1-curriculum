@@ -1,7 +1,7 @@
 <h1 align="center">Introduction to Git</h1>
 
 ## Overview
-Git is currently the most popular **version control system** in the world. It records the changes made to files over time in a type of **database** called a **repository**. It's completely free and open source. Git is an extremely powerful tool. It's a good idea to learn how to use Git early on in your coding journey; it allows you to easily share code, collaborate with other people on projects and track the entire version history of the files within a project.
+Git is currently the most popular **version control system** in the world. It records the changes made to files over time in a type of **database** called a **repository**. It's completely free and open source. Git is an extremely powerful tool. It's a good idea to learn how to use Git early on in your coding journey; it allows you to easily share code, collaborate with other people on projects and track the entire version history of the files within a project. Below is a summary of the main concepts and commands you need to know to get started with Git.
 
 ## Git vs GitHub
 Git and GitHub are not the same!
@@ -13,8 +13,6 @@ Git is a type of <a href="https://git-scm.com/book/en/v2/Getting-Started-About-V
 GitHub is a cloud-based website that allows for Git repositories to be hosted online in remote repositories. It includes multiple tools to aid collaboration on projects, including features like issues and pull requests. It is possible to **push** your your Git repositories stored locally on your computer onto the platform so you can share your work with others.
 
 To use <a href= "https://github.com/">GitHub</a>, you need to set up a free account.
-
-<img src="https://user.oc-static.com/upload/2022/01/04/16412576933806_image30.png" alt="GitHub workflow" height="300">
 
 #### A note about GitHub Desktop
 GitHub Desktop is GUI which provides an alternative to using the command line, aiming to make it easier for users to interact with Git and GitHub repositories. However, we recommend interacting with Git using the command line; this will allow you to better understand Git concepts and allows access to full functionality of Git. 
@@ -43,7 +41,6 @@ The basic Git workflow can be broken down simply into 4 steps, which involve usi
 
 Each file in your directory can be either:
 1. **"tracked"**, which includes files that have either been staged or committed.
-or
 2. **"untracked"** which includes all other files.
 
 The above workflow is done repeatedly as you work on your project and make changes such that all changes are tracked.
@@ -89,36 +86,53 @@ Untracked files:
 ```
 The above code shows `file1.txt` is a tracked file which has new changes that have not been staged for commiting and `file2.txt` is untracked.
 
-Note at the top, it states the current branch is "main" which is the default. We will go over Git branching in another section.
-
-### Checking the detailed changes within files
-`git diff`... TODO
-
-### .gitignore 
-TODO
+Note at the top, it states the current branch is "main" which is the default. Don't worry about this now - we will go over Git branching in another section.
 
 ## Where does GitHub come in?
-<span style="color:red">TODO:</span> paragraph on github/pushing code
+TODO: paragraph on github/pushing code
 `git push`
 `git pull`
 `git fetch`
 
 ### Cloning
-In the first of the four steps of the basic Git workflow, rather than setting up your own Git repository, it is possible to get a local copy of an existing remote repository hosted on GitHub.com by the process of **cloning**. For example, this would be useful if you wanted to contribute to a project which has already been started. The code for the first step would be replaced with the following:<br>
+In the first of the four steps of the basic Git workflow, rather than setting up your own Git repository, it is possible to get a local copy of an existing remote repository hosted on GitHub.com by the process of **cloning**. For example, this would be useful if you wanted to contribute to a project which has already been started. The code for the first step would be replaced with the following:<br><br>
 `$ git clone url`<br>
 Replace "url" with an actual URL of the repository you want. For example if you wanted to clone the "stage-1-curriculum" repository, you would type:<br>
-`$ git clone https://github.com/docode-uk/stage-1-curriculum.git`<br>
+`$ git clone https://github.com/docode-uk/stage-1-curriculum.git`<br><br>
 This creates a directory called "stage-1-curriculum" and initialises a .git directory inside it. It pulls down all the data for that repository and checks out a copy of the latest version. If you wanted to clone the repository into a directory named something else, you can specify the new directory name as an additional argument, e.g.:<br>
-`$ git clone https://github.com/docode-uk/stage-1-curriculum.git mycurriculum`<br>
-The above uses the **https:// transfer protocol**. Note that you can also use the <a href="https://graphite.dev/guides/git-clone-ssh-vs-https">SSH transfer protocol</a>.
+`$ git clone https://github.com/docode-uk/stage-1-curriculum.git mycurriculum`<br><br>
+The above uses the **https:// transfer protocol**. Note that you can also use the **SSH transfer protocol**.
 
 The <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">GitHub Docs</a> provide concise instructions on this process, including how to access the particular URL of the repository you want to clone on GitHub - we would recommend you follow this when cloning for the first time.
 
+## gitignore
+<a href= "https://git-scm.com/docs/gitignore">gitignore</a> specifies files that you intentionally want to remain untracked and therefore ignored. This is useful for keeping sensitive information such as passwords and configuration files private, especially when pushing code to a public remote repository.
+
+To do this, you need to create a `.gitignore` file in the **root directory** of your project:
+1. Navigate to root directory of project
+```
+cd /path_to_root_directory
+```
+2. Create and open .gitignore file in text editor (e.g. nano)
+```
+nano .gitignore
+```
+3. Add files and directories you want to ignore, e.g.
+```
+secrets.txt
+.env
+.DS_Store
+```
+4. Save and close the .gitignore file
+In nano, press CTRL+X, then Y, and then ENTER to save and exit.
+5. Check the status of your files using `git status` to ensure the specified files are being ignored.
+
+Here are some useful <a href = "https://github.com/github/gitignore">gitignore templates</a>.
+
 ## Further resources
-### Video demos
-TODO
+### Videos
 <ul> 
-    <li></li>
+    <li><a href ="https://youtu.be/hwP7WQkmECE?si=l65hOA6M2rc-53-V">Git explained in 100 seconds</a></li>
 </ul>
 
 ### Articles/guides
