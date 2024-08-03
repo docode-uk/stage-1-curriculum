@@ -59,18 +59,6 @@ with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
             conn.sendall(data)
 ```
 
-```python
-# client.py
-import socket
-
-with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
-    sock.connect("/tmp/docode.sock")
-    sock.sendall(b"Hello, docode!")
-    data = sock.recv(1024)
-
-print(f"Received {data!r}")
-```
-
 If we run `python server.py` we can see the address we are listening on - but the program will appear to hang: it is awaiting a connection before proceeding!
 
 We can prove the kernel is listenting on this socket by creating another terminal instance, and running
@@ -89,5 +77,58 @@ netstat -lp | grep docode
 
 In this same terminal we can run `python client.py` - check the output of each terminal!
 
-----
-## Questions
+```python
+# client.py
+import socket
+
+with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
+    sock.connect("/tmp/docode.sock")
+    sock.sendall(b"Hello, docode!")
+    data = sock.recv(1024)
+
+print(f"Received {data!r}")
+```
+
+Success! We should see that both the server and client process report the message!
+
+### How did that work?
+
+When calling 
+
+```python
+with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
+``` 
+
+we are using a special python keywork `with` - this is known as a [context manager](https://docs.python.org/3/library/stdtypes.html#typecontextmanager) in python, which allows us to run code before we enter the `with` block (defined by a `__enter__` method), and run code afterwards (defined by a `__exit__` block). This is usually done to make sure we clean up code or states that are easy to forget to write! Often this is used in contexts when interfacing with files or networking where we want to close ports or release resources back to the operating system.
+
+Looking at the source files we can see this is [exactly what is happening](https://github.com/python/cpython/blob/main/Lib/socket.py#L215-L242) with the socket class.
+
+The setting `socket.AF_UNIX` denotes that we are using Unix address family, and the `socket.SOCK_STREAM` allows us to create the object in stream mode (rather than using a datagram).
+
+Next we can instruct the kernel to bind the socket to a file with the settings we've defined with `bind`. Unlike other operating systems, a core philopsophy in Unix is that [everything is a file](https://en.wikipedia.org/wiki/Everything_is_a_file) - including sockets! The advantage of this is that the same tools we can use to handle "normal" files can be used to interface with other systems:
+
+```python
+sock.bind("/tmp/docode.sock")
+sock.listen()
+```
+
+If we inspect the file generated after running the server file we can see it is a socket type (`file /tmp/docode.sock`).
+Now our socket is setup and bound - our process needs to listen to the socket before anything happens. We're now listening to the socket created at `/tmp/docode.sock`.
+
+We're now ready to `accept` connections from the operating system with `conn, address = sock.accept()`. Accept returns a tuple of a connection (a _new_ socket) and the address the sender we're receiving the message from exists at. This is a _synchronous_ or _blocking_ function - the rest of our program cannot run until we receive a message.
+
+Finally, with our new `conn` object we can receive data and print it out to the user. This program echos the sent message back to the sender with `conn.sendall`. Once we have received all the available data and there is nothing left we can break out of the while loop, and our program then cleans up the connections (as we leave the with blocks).
+
+```python
+with conn:
+    while True:
+        data = conn.recv(1024)
+        print(f"Got connection with message: {data}")
+        if not data:
+            break
+        conn.sendall(data)
+```
+
+### The Client 
+
+Our client script uses the same function calls, except connect instead of bind!
