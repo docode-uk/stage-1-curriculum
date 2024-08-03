@@ -137,4 +137,23 @@ Our client script uses the same function calls, except connect instead of bind.
 
 State/process diagrams can make this easier to comprehend:
 
-![Socket States](image.png)
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+
+    Server->>Server: socket(AF_UNIX, SOCK_STREAM)
+    Server->>Server: bind(path)
+    Server->>Server: listen()
+    Server->>Server: accept()
+
+    Client->>Client: socket(AF_UNIX, SOCK_STREAM)
+    Client->>Server: connect(path)
+
+    Client->>Server: sendall(message)
+    Server->>Client: sendall(echo)
+
+    Client->>Client: close()
+    Server->>Server: close()
+
+```
