@@ -131,4 +131,10 @@ with conn:
 
 ### The Client 
 
-Our client script uses the same function calls, except connect instead of bind!
+Our client script uses the same function calls, except connect instead of bind.
+
+## Visualising what happened
+
+State/process diagrams can make this easier to comprehend:
+
+![Socket States](image.png)
