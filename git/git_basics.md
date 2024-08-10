@@ -7,18 +7,17 @@ Git is currently the most popular **version control system** in the world. It re
 Git and GitHub are not the same!
 
 ### Git
-Git is a type of <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">distributed version control</a> software which can be installed locally on your computer. It allows you to repeatedly save your code over time as you work on a project into a local Git respository, which is a type of database. Every time you use Git to save the current state of your project, Git takes a "snapshot" of what all your files within that project look like at that moment in time AND stores a reference to that snapshot.
+Git is a type of <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">distributed version control</a> software which can be installed locally on your computer. It allows you to repeatedly save your code over time as you work on a project into a **local Git respository**, which is a type of database stored locally on your computer. Every time you use Git to save the current state of your project, Git takes a "snapshot" of what all your files within that project look like at that moment in time AND stores a reference to that snapshot.
+
+Before using Git you need to make sure it is <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">installed</a> on your computer.
 
 ### GitHub
-GitHub is a cloud-based website that allows for Git repositories to be hosted online in remote repositories. It includes multiple tools to aid collaboration on projects, including features like issues and pull requests. It is possible to **push** your your Git repositories stored locally on your computer onto the platform so you can share your work with others.
+GitHub is a cloud-based website that allows for Git repositories to be hosted online in **remote repositories** so that they can be easily shared with others. It includes multiple tools to aid collaboration on projects, including features like issues and pull requests. It is possible to **push** your your Git repositories stored locally on your computer onto the platform so you can share your work with others.
 
 To use <a href= "https://github.com/">GitHub</a>, you need to set up a free account.
 
 #### A note about GitHub Desktop
 GitHub Desktop is GUI which provides an alternative to using the command line, aiming to make it easier for users to interact with Git and GitHub repositories. However, we recommend interacting with Git using the command line; this will allow you to better understand Git concepts and allows access to full functionality of Git. 
-
-## Installing Git
-Before using Git you need to make sure it is <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">installed</a> on your computer.
 
 ## Basic Git workflow
 The basic Git workflow can be broken down simply into 4 steps, which involve using basic **Git commands** which can be run on the command line:
@@ -89,10 +88,17 @@ The above code shows `file1.txt` is a tracked file which has new changes that ha
 Note at the top, it states the current branch is "main" which is the default. Don't worry about this now - we will go over Git branching in another section.
 
 ## Where does GitHub come in?
-TODO: paragraph on github/pushing code
+TOFINISH
+GitHub allows host your work stored in your local Git repository in a remote repository online, enabling collaboration with others and remote access to your projects.
+
+The main steps in this process are as follows:
+1. Log into GitHub.com and <a href  ="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">make a new remote repository</a> using the web interface.
+
+2. Use git remote add origin <URL> to link your local repository to it 
+
+git remote add origin ...
+git push -u origin main
 `git push`
-`git pull`
-`git fetch`
 
 ### Cloning
 In the first of the four steps of the basic Git workflow, rather than setting up your own Git repository, it is possible to get a local copy of an existing remote repository hosted on GitHub.com by the process of **cloning**. For example, this would be useful if you wanted to contribute to a project which has already been started. The code for the first step would be replaced with the following:<br><br>
@@ -140,10 +146,8 @@ Here are some useful <a href = "https://github.com/github/gitignore">gitignore t
     <li><a href="https://git-scm.com/book/en/v2">ProGit</a> --> A great open source reference guide</li>
     <li><a href="https://docs.github.com/en">GitHub Docs</a> --> The official GitHub documentation</li>
     <li><a href="https://git-scm.com/doc">Git Documentation</a> --> The official Git documentation</li>
+    <li><a href="https://training.github.com/downloads/github-git-cheat-sheet.pdf">Git cheat sheet</a> --> A useful cheat sheet with the most common Git commands</li>
 </ul>
 
-## Exercises
+## Exercise
 TODO
-
-## NOTES
-https://learngitbranching.js.org/ - for git branching, also include git checkout in this, git merge, git reset
