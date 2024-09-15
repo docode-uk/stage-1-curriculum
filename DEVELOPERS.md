@@ -3,7 +3,7 @@
 This project uses Gitbook to generate the book that can be visualised in a browser. To run the project locally, you need to have Gitbook installed on your machine. If you don't have Gitbook installed, you can install it by running the following command:
 
 ```bash
-npm install @gitbook-ng/gitbook
+npm install
 ```
 
 Once you have Gitbook installed, you can run the following commands to start the project:
