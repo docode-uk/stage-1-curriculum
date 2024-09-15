@@ -145,3 +145,4 @@ Hello Cron!
 ```
 
 If you continue to press enter, you will go through the other messages until there are none left. We can remove our cron job by deleting the line from the crontab file and saving the file. We can then check the crontab file with the `crontab -l` command to ensure the job has been removed.
+
