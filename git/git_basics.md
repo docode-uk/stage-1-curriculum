@@ -1,4 +1,4 @@
-<h1 align="center">Introduction to Git</h1>
+<h1 align="center">Introduction to Git and GitHub</h1>
 
 ## Overview
 Git is currently the most popular **version control system** in the world. It records the changes made to files over time in a type of **database** called a **repository**. It's completely free and open source. Git is an extremely powerful tool. It's a good idea to learn how to use Git early on in your coding journey; it allows you to easily share code, collaborate with other people on projects and track the entire version history of the files within a project. Below is a summary of the main concepts and commands you need to know to get started with Git.
@@ -88,20 +88,28 @@ The above code shows `file1.txt` is a tracked file which has new changes that ha
 Note at the top, it states the current branch is "main" which is the default. Don't worry about this now - we will go over Git branching in another section.
 
 ## Where does GitHub come in?
-TOFINISH
-GitHub allows host your work stored in your local Git repository in a remote repository online, enabling collaboration with others and remote access to your projects.
+GitHub allows you to host the work stored in your local Git repository in a remote repository online, enabling collaboration with others and remote access to your projects.
 
 The main steps in this process are as follows:
 1. Log into GitHub.com and <a href  ="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">make a new remote repository</a> using the web interface.
 
-2. Use git remote add origin <URL> to link your local repository to it 
+2. Once you click "Create repository" as per the instructions on the above link,
 
-git remote add origin ...
+ "Link your local repository to it and **push** your code to the remote repository.
+Ensure you are within your project directory. Use the following commands :
+```
+git remote add origin URL
+```
+Replace URL with the URL of your newly created GitHub repository. 
+
+```
+
+git branch -M main
 git push -u origin main
-`git push`
+```
 
 ### Cloning
-In the first of the four steps of the basic Git workflow, rather than setting up your own Git repository, it is possible to get a local copy of an existing remote repository hosted on GitHub.com by the process of **cloning**. For example, this would be useful if you wanted to contribute to a project which has already been started. The code for the first step would be replaced with the following:<br><br>
+In the first of the four steps of the basic Git workflow, rather than setting up your own Git repository, it is possible to get a local copy of an existing remote repository hosted on GitHub.com by the process of **cloning**. For example, this would be useful if you wanted to contribute to a project which has already been started. A cloned repository is linked to the original remote repository, allowing you to push code to the project. The code for the first step of the basic Git workflow above would be replaced with the following:<br><br>
 `$ git clone url`<br>
 Replace "url" with an actual URL of the repository you want. For example if you wanted to clone the "stage-1-curriculum" repository, you would type:<br>
 `$ git clone https://github.com/docode-uk/stage-1-curriculum.git`<br><br>
@@ -111,8 +119,10 @@ The above uses the **https:// transfer protocol**. Note that you can also use th
 
 The <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">GitHub Docs</a> provide concise instructions on this process, including how to access the particular URL of the repository you want to clone on GitHub - we would recommend you follow this when cloning for the first time.
 
-## gitignore
-<a href= "https://git-scm.com/docs/gitignore">gitignore</a> specifies files that you intentionally want to remain untracked and therefore ignored. This is useful for keeping sensitive information such as passwords and configuration files private, especially when pushing code to a public remote repository.
+ We will discuss how Git/GitHub can be used to collaborate on projects with others in more depth in subsequent chapters, including using cloning and branching.
+
+## .gitignore
+<a href= "https://git-scm.com/docs/gitignore">.gitignore</a> specifies files that you intentionally want to remain untracked and therefore ignored. This is useful for keeping sensitive information such as passwords and configuration files private, especially when pushing code to a public remote repository.
 
 To do this, you need to create a `.gitignore` file in the **root directory** of your project:
 1. Navigate to root directory of project
@@ -135,14 +145,12 @@ In nano, press CTRL+X, then Y, and then ENTER to save and exit.
 
 Here are some useful <a href = "https://github.com/github/gitignore">gitignore templates</a>.
 
+## Summary
+We have covered the core topics required to get started with making your own local Git repository and pushing this to a remote repository on GitHub. 
+
 ## Further resources
-### Videos
 <ul> 
     <li><a href ="https://youtu.be/hwP7WQkmECE?si=l65hOA6M2rc-53-V">Git explained in 100 seconds</a></li>
-</ul>
-
-### Articles/guides
-<ul> 
     <li><a href="https://git-scm.com/book/en/v2">ProGit</a> --> A great open source reference guide</li>
     <li><a href="https://docs.github.com/en">GitHub Docs</a> --> The official GitHub documentation</li>
     <li><a href="https://git-scm.com/doc">Git Documentation</a> --> The official Git documentation</li>
@@ -150,4 +158,4 @@ Here are some useful <a href = "https://github.com/github/gitignore">gitignore t
 </ul>
 
 ## Exercise
-TODO
+Work through the above steps to set up your own local repository with a project you have completed, and push this to a remote repository on GitHub.
